@@ -17,14 +17,6 @@ const userSchema = new mongoose.Schema({
     lowercase: true,
     match: /^\S+@\S+\.\S+$/,
   },
-  phone_number: {
-    type: Number,
-    required: true,
-    validate: {
-      validator: (v) => /^\d{10}$/.test(v),
-      message: (props) => `${props.value} is not a valid phone number!`,
-    },
-  },
   password: {
     type: String,
     required: true,
