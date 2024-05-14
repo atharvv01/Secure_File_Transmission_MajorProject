@@ -1,6 +1,7 @@
 // Schema imports
 const Upload = require("../models/uploads_model");
 const User = require("../models/user_model")
+
 // Require dotenv
 require('dotenv').config();
 
@@ -9,6 +10,7 @@ const uploadData = async (req, res) => {
     try {
         const userData = req.decoded; // Decoded user information from the token
 
+        console.log(userData);
         // Extract data from request body or query parameters
         const { data, password, uploaded_for } = req.body;
 

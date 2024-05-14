@@ -14,6 +14,7 @@ const { validateInputs } = require("../validators/user_validations");
 
 // Schema imports
 const User = require("../models/user_model");
+const Upload = require("../models/uploads_model")
 
 const signup = async (req, res) => {
     try {
@@ -265,7 +266,6 @@ const reset_password = async (req, res) => {
     }
 };
 
-
 // Function to check if the token is expired
 const isTokenExpired = (timestamp) => {
     const expirationTime = 86400000;
@@ -304,6 +304,26 @@ const uploadImg = async (req, res) => {
     }
 };
 
+const getFilesToDownload = async (req, res) => {
+    try {
+        const userData = req.decoded; // Decoded user information from the token
+        
+        // Find all uploads associated with the user's ID
+        const uploads = await Upload.find({ uploaded_for: userData.userId });
+
+        // If no uploads are found, return a message indicating no files available
+        if (!uploads || uploads.length === 0) {
+            return res.status(200).json({ message: "No files available" });
+        }
+
+        // Return the list of uploads
+        res.status(200).json(uploads);
+    } catch (error) {
+        console.error("Error fetching uploads:", error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+};
+
 
 module.exports = {
     signup,
@@ -311,5 +331,6 @@ module.exports = {
     forget_password,
     reset_password,
     getUserDetails,
-    uploadImg
+    uploadImg,
+    getFilesToDownload
 };
