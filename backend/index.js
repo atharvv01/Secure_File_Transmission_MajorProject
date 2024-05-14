@@ -17,6 +17,14 @@ app.use(cors())
 // Parse JSON requests
 app.use(bodyParser.json());
 
+// Define routes
+const userRoutes = require("./routes/user_routes")
+const uploadRoutes = require("./routes/upload_routes")
+
+//using routes in app 
+app.use("/users", userRoutes)
+app.use("/uploads", uploadRoutes)
+
 
 
 // Connect to MongoDB asynchronously

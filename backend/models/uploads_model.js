@@ -15,8 +15,7 @@ const uploadSchema = new mongoose.Schema({
     required: true
   },
   uploaded_for:{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
+    type: String,
     required: true,
   },
   sharedDate: {
