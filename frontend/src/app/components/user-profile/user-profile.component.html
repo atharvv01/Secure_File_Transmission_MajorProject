@@ -1,0 +1,83 @@
+<app-navbar></app-navbar>
+<div class="main-content">
+  <div class="profile-section">
+    <div class="username-section">
+      <div class="profile-photo">
+        <img class="pp" src={{userDetails.profile_pic}} alt="">
+      </div>
+      <div class="user-details">
+        <div class="username">
+          <div class="name">
+            <H1>
+              <span>heyy, </span>
+              <span class="name-of-user">{{ userDetails.username }}</span>
+            </H1>
+          </div>
+          <!-- <div class="edit-button"> -->
+            <!-- <button class="edit-name-button">Edit</button> -->
+          <!-- </div> -->
+        </div>
+        <div class="points-section">
+          <!-- <p><b>200 points</b></p> -->
+        </div>
+        <div class="upload-photo-option">
+          <button class="upload-photo-button">
+            Upload Photo
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="about-user-section">
+      <div class="email-section-wrapper">
+        <div class="tag">
+          Email
+        </div>
+        <div class="email">
+          <div class="email-id">
+            <p>{{ userDetails.email }}</p>
+          </div>
+          <!-- <button class="edit-name-button">Edit</button> -->
+        </div>
+      </div>
+      <div class="about-section-wrapper">
+        <div class="tag" id="about-me-tag">
+          About {{ userDetails.name }}
+        </div>
+        <div class="user-bio">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt similique vel obcaecati temporibus dicta hic? Modi facilis iste temporibus quia!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="myblogs-section">
+    <div class="my-blogs-text-wrapper">
+      <div class="my-blog-text">
+        <!-- <p>Saved Blogs</p> -->
+      </div>
+    </div>
+    <div class="blog-renders-wrapper">
+      
+      <div class="blog-renders" >
+        <app-smaller-blog  *ngFor="let blog of blogDetails"
+        [title]="blog.title"
+        [likes]="blog.likes"
+        [blogId]="blog._id"
+        [views]="blog.views"
+        [thumbnail]="blog.thumbnail"
+        (blogClicked)="onBlogClicked(blog)"
+        (blogSaved)="refreshData()">
+      </app-smaller-blog>
+
+        <!-- <div class="edit-delete-buttons">
+          <button class="edit-button">
+            <div class="edit">Edit</div>
+          </button>
+          <button class="delete-button">
+            <div class="delete">Delete</div>
+          </button>
+        </div> -->
+      </div>
+
+    </div>
+  </div>
+</div>

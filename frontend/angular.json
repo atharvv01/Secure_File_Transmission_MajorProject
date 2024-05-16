@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "frontend": {
+    "06_Frontend": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -23,7 +23,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/frontend",
+            "outputPath": "dist/06-frontend",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -67,10 +67,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "frontend:build:production"
+              "buildTarget": "06_Frontend:build:production"
             },
             "development": {
-              "buildTarget": "frontend:build:development"
+              "buildTarget": "06_Frontend:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -78,7 +78,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "frontend:build"
+            "buildTarget": "06_Frontend:build"
           }
         },
         "test": {
@@ -94,12 +94,20 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "node_modules/bootstrap/scss/bootstrap.scss",
+              "node_modules/bootstrap-icons/font/bootstrap-icons.css",
+              "src/styles.scss",
+              "./node_modules/font-awesome/css/font-awesome.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+            ]
           }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "c4519ad6-bd65-4b9d-a55f-140e8e8c519c"
   }
 }
